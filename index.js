@@ -1,12 +1,12 @@
-import{a as u,S as p,i as n}from"./assets/vendor-30VqbI-A.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))l(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const i of t.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&l(i)}).observe(document,{childList:!0,subtree:!0});function a(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function l(e){if(e.ep)return;e.ep=!0;const t=a(e);fetch(e.href,t)}})();u.defaults.baseURL="https://pixabay.com/api/";const c={key:"49355742-bd7d44539c0e651abd52850bf",image_type:"photo",orientation:"horizontal",safesearch:!0};function h(o){return c.q=o,u.get(`?${new URLSearchParams(c)}`).then(r=>r).catch(r=>r)}const d=document.querySelector(".gallery"),s=document.querySelector(".loader"),y=new p(".gallery li a",{captionsData:"alt",captionDelay:250});function L(o){const r=o.map(a=>{const{webformatURL:l,tags:e,largeImageURL:t,likes:i,views:g,comments:m,downloads:f}=a;return`<li class="gallery-card">
-        <a href="${t}">
-          <img src="${l}" alt="${e}" class="card-image" width="360" height="152" />
-          <ul class="card-caption">
-            <li class="image-tag"><p>Likes<br />${i}</p></li>
-            <li class="image-tag"><p>Views<br />${g}</p></li>
-            <li class="image-tag"><p>Comments<br />${m}</p></li>
-            <li class="image-tag"><p>Downloads<br />${f}</p></li>
+import{a as l,i as c}from"./assets/vendor-DWF7Y0fL.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function o(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function s(e){if(e.ep)return;e.ep=!0;const t=o(e);fetch(e.href,t)}})();async function u(r){const i="https://api.openweathermap.org/data/2.5/weather",s={q:r,appid:"07904cc67030c59fe615e3aa37a319a8",units:"metric"};try{const{data:e}=await l(i,{params:s});if(!e)throw new Error("Error");return e}catch(e){console.log(e)}}function m(r){return`
+         <h2 class="countryName">${r.name}, ${r.sys.country}</h2>
+          <img src="http://openweathermap.org/img/w/${r.weather[0].icon}.png" alt="${r.weather[0].description}" class="weatherImg" />
+          <p class="disc">${r.weather[0].description}</p>
+          <ul class="detailsList">
+            <li class="weatherDetails">Temperature: ${r.main.temp}&#8451;</li>
+            <li class="weatherDetails">Feels like: ${r.main.feels_like}&#8451;</li>
+            <li class="weatherDetails">Humidity: ${r.main.humidity}%</li>
+            <li class="weatherDetails">Pressure: ${r.main.pressure}</li>
           </ul>
-        </a>
-      </li>`}).join("");s.classList.toggle("loader"),d.insertAdjacentHTML("beforeend",r),y.refresh()}const b=document.querySelector(".form");s.classList.toggle("loader");b.addEventListener("submit",w);function w(o){o.preventDefault();const r=o.currentTarget.elements.search_text.value.toLowerCase().trim();if(!r){n.error({message:"Search field must not be empty!",position:"topRight"});return}d.innerHTML="",s.classList.toggle("loader"),h(r).then(a=>{if(a.data.totalHits===0){s.classList.toggle("loader"),n.error({message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}L(a.data.hits)}).catch(()=>{s.classList.toggle("loader"),s.innerHTML="Oops... something went wrong"})}
+  `}const a=document.querySelector(".form"),p=document.querySelector(".card");a.addEventListener("submit",f);async function f(r){r.preventDefault();const i=a.elements.city.value.trim();if(!i){c.error({title:"Error",message:"Enter city",position:"topRight"});return}try{const o=await u(i);if(!o){c.error({title:"Error",message:"Enter city",position:"topRight"});return}p.innerHTML=m(o)}catch(o){console.log(o)}}
 //# sourceMappingURL=index.js.map
